@@ -1,0 +1,1 @@
+# refactoring to do and deplace EAN generator here in func or Class
