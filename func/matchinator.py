@@ -1,13 +1,18 @@
 import openpyxl
 from difflib import get_close_matches
+from uuid import uuid4
+from datetime import datetime
+import pathlib
 
 class Matchinator:
-    def __init__(self, rejects, orderable):
+    def __init__(self, rejects, orderable, user: str):
         self.rejects = self.rejects_sheet(rejects)
         self.orderable = self.orderable_sheet(orderable)
         self.rejects_dict = self.create_rejects_dict()
         self.orderable_dict = self.create_orderable_dict()
         self.match_dict = self.create_match_dict()
+        self.date = datetime.now()
+        self.user = user
     
     def rejects_sheet(self, rejects):
         """Load and return the rejects sheet from the rejects workbook."""
@@ -56,8 +61,14 @@ class Matchinator:
                 active_sheet.cell(row=row_index, column=2, value=code)
                 active_sheet.cell(row=row_index, column=3, value=product)
                 row_index += 1
-
-        new_wb.save("match.xlsx")
         
-        return "match.xlsx"
+        folder = pathlib.Path("match")
+        folder.mkdir(exist_ok=True)
+        random_str = uuid4()
+        file_name = f"match{random_str}_{self.date.day}_{self.date.month}_{self.date.year}_{self.user}.xlsx"
+        file_path = str(folder/ file_name)
+
+        new_wb.save(file_path)
+        
+        return file_path
 
