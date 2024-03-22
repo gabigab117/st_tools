@@ -14,5 +14,5 @@ if check_password():
             files = os.listdir(path=actual_rep)
             for file in files:
                 _, ext = os.path.splitext(file)
-                if ext == '.png':
+                if ext == '.png' or ext == ".xlsx":
                     os.remove(file)

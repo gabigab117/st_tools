@@ -11,11 +11,11 @@ class Matchinator:
     
     def rejects_sheet(self, rejects):
         """Load and return the rejects sheet from the rejects workbook."""
-        return openpyxl.load_workbook(rejects)["rejets"]
+        return openpyxl.load_workbook(rejects).worksheets[0]
     
     def orderable_sheet(self, orderable):
         """Load and return the orderable sheet from the orderable workbook."""
-        return openpyxl.load_workbook(orderable)["Feuil1"]
+        return openpyxl.load_workbook(orderable).worksheets[0]
     
     def create_rejects_dict(self):
         """Create a dictionary from rejects sheet mapping product codes to descriptions."""
