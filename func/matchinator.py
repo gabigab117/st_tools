@@ -72,3 +72,14 @@ class Matchinator:
         
         return file_path
 
+
+class NonReferencedMatchinator(Matchinator):
+    def create_orderable_dict(self):
+        """Create a dictionary from orderable sheet mapping product codes to descriptions."""
+        cadencier = {}
+        for cel_b, cell_c in zip(self.orderable["B"], self.orderable["C"]):
+            if cell_c.value:
+                cadencier[cel_b.value] = cell_c.value
+            else:
+                cadencier[cel_b.value] = "Pas de libellé !"
+        return cadencier
