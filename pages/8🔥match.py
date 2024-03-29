@@ -13,11 +13,12 @@ user = st.text_input(label="Prénom", max_chars=20)
 
 
 if rejects and orderable and user:
-    if choice == "Cadencier":
-        matchinator: Matchinator = Matchinator(rejects, orderable, user)
-    else:
-        matchinator: NonReferencedMatchinator = NonReferencedMatchinator(rejects, orderable, user)
-    file_name = matchinator.create_match_workbook()
+    with st.spinner("Patience..."):
+        if choice == "Cadencier Casino":
+            matchinator: Matchinator = Matchinator(rejects, orderable, user)
+        else:
+            matchinator: NonReferencedMatchinator = NonReferencedMatchinator(rejects, orderable, user)
+        file_name = matchinator.create_match_workbook()
     
     if file_name:
         st.download_button(label="Télécharger le fichier", 
