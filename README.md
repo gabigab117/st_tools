@@ -1,11 +1,25 @@
-# st_tools
+# Streamlit Toolkit
 
-Boite à outils Streamlit.
+This toolkit is designed to provide a convenient set of tools for various data processing tasks using Streamlit. Streamlit is a popular open-source framework for building data apps quickly and easily with Python.
 
-Projet prêt à l'emploi.
+- Customize your Streamlit app appearance by modifying the config.toml file located in the .streamlit directory.
+- Ensure you have set up the necessary configurations, including the randomly chosen password stored in secrets.toml within the .streamlit directory.
 
-Le plus intéressant est de pouvoir charger un fichier Excel avec une liste d'EANS pour générer des codes barres.
+Run the Streamlit app using the following command:
+```
+streamlit run Accueil.py
+```
 
-## Notes
+# Note
 
-Les EANs doivent être dans la colonne A. Seul les EANs 13 seront pris en compte.
+The most interesting aspects of this toolkit lie within the following pages:
+
+- 5extract_commande.py: This page contains functionality for extracting commands.
+- 6pdf_excel.py: Here, you'll find tools for converting PDF files to Excel format.
+- 8match.py: This page provides matching functionalities.
+Additionally, explore the classes and functions associated with these pages within the func package.
+
+# Future Improvements
+
+Pages such as ean_gen are functional, but there is substantial refactoring required to transition from script-based implementation to object-oriented programming (OOP) for better organization and maintainability.
+
