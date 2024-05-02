@@ -14,7 +14,7 @@ streamlit run Accueil.py
 
 The most interesting aspects of this toolkit lie within the following pages:
 
-- 5extract_commande.py: This page contains functionality for extracting commands.
+- 5extract_commande.py: This page contains functionality for extracting information from unstructured text files containing commands and organizing them into an Excel file for better analysis.
 - 6pdf_excel.py: Here, you'll find tools for converting PDF files to Excel format.
 - 8match.py: This page provides matching functionalities.
 Additionally, explore the classes and functions associated with these pages within the func package.
