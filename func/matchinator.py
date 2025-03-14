@@ -25,16 +25,16 @@ class Matchinator:
     def create_rejects_dict(self):
         """Create a dictionary from rejects sheet mapping product codes to descriptions."""
         rejects = {}
-        for cel_d, cell_f in zip(self.rejects["D"], self.rejects["F"]):
-            rejects[cel_d.value] = cell_f.value
+        for cel_d, cell_g in zip(self.rejects["D"], self.rejects["G"]):
+            rejects[cel_d.value] = cell_g.value
     
         return rejects
     
     def create_orderable_dict(self):
         """Create a dictionary from orderable sheet mapping product codes to descriptions."""
         cadencier = {}
-        for cel_l, cell_b in zip(self.orderable["L"], self.orderable["B"]):
-            cadencier[cel_l.value] = cell_b.value
+        for cel_a, cell_b, cell_y in zip(self.orderable["A"], self.orderable["B"], self.orderable["Y"]):
+            cadencier[f"{cel_a.value} - Stock : {cell_y.value}"] = cell_b.value
         return cadencier
     
     def create_match_dict(self):
@@ -71,12 +71,3 @@ class Matchinator:
         new_wb.save(file_path)
         
         return file_path
-
-
-class NonReferencedMatchinator(Matchinator):
-    def create_orderable_dict(self):
-        """Create a dictionary from orderable sheet mapping product codes to descriptions."""
-        cadencier = {}
-        for cel_b, cell_c in zip(self.orderable["B"], self.orderable["C"]):
-            cadencier[cel_b.value] = cell_c.value if cell_c.value else "Pas de libellé"
-        return cadencier
